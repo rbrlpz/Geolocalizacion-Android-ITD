@@ -1,6 +1,8 @@
 package com.itd.Geolocalizacion;
 
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -42,5 +44,39 @@ public class MyActivity extends Activity {
             }
         });
 
+    }
+
+    private void comienzaLocalizacion() {
+        //Obtenemos una referencia al servicio de localizacion del sistema
+locManager =
+        (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+Location ubicacion =
+        locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+mostrarUbicacion(ubicacion);
+
+locListener = new LocationListener() {
+    @Override
+    public void onLocationChanged(Location location) {
+        mostrarUbicacion(location);
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+};
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                30000, 0,locListener);
     }
 }
