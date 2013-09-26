@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+    >
+
+    <TextView
+        android:id="@+id/lblPosicion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Posición Actual"
+        />
+    <TextView
+        android:id="@+id/lblPosLatitud"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="lat"
+        />
+    <TextView
+        android:id="@+id/lblPosLongitud"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="long"
+        />
+    <TextView
+        android:id="@+id/lblPresicion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Presicion"
+        />
+    <Button android:id="@+id/btnActualizar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+        ></Button>
+    <Button android:id="@+id/btnApagar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Apagar"
+        ></Button>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Estatus del sensor: "
+        />
+    <TextView
+        android:id="@+id/lblEstado"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Aqui va el estatus"
+        />
+</LinearLayout>
+
