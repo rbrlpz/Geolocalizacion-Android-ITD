@@ -13,6 +13,10 @@ import android.widget.TextView;
 public class MyActivity extends Activity {
     private LocationManager locManager;
     private LocationListener locListener;
+
+    TextView latitud;
+    TextView longitud;
+    TextView presicion;
     /**
      * Called when the activity is first created.
      */
@@ -20,9 +24,9 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        TextView latitud = (TextView)findViewById(R.id.lblPosLatitud);
-        TextView longitud = (TextView)findViewById(R.id.lblPosLongitud);
-        TextView presicion = (TextView)findViewById(R.id.lblPresicion);
+        latitud = (TextView)findViewById(R.id.lblPosLatitud);
+        longitud = (TextView)findViewById(R.id.lblPosLongitud);
+        presicion = (TextView)findViewById(R.id.lblPresicion);
 
         Button prende = (Button)findViewById(R.id.btnActualizar);
         Button apaga = (Button)findViewById(R.id.btnApagar);
@@ -44,6 +48,10 @@ public class MyActivity extends Activity {
             }
         });
 
+    }
+
+    private void apagaLocalizacion() {
+        locManager.removeUpdates(locListener);
     }
 
     private void comienzaLocalizacion() {
@@ -78,5 +86,13 @@ locListener = new LocationListener() {
 };
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 30000, 0,locListener);
+    }
+
+    private void mostrarUbicacion(Location location) {
+        if (location != null){
+            longitud.setText(String.valueOf(location.getLongitude()));
+            latitud.setText(location.getLatitude() + "");
+            presicion.setText(location.getAccuracy()+"");
+        }
     }
 }
